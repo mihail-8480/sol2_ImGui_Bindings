@@ -1,7 +1,7 @@
 #pragma once
-#include "../ImGui//imgui.h"
+#include <imgui.h>
 #include <string>
-#include "sol.hpp"
+#include <sol/sol.hpp>
 
 namespace sol_ImGui
 {
@@ -1457,9 +1457,7 @@ namespace sol_ImGui
 	inline void EndPopup()																				{ ImGui::EndPopup(); }
 	inline void OpenPopup(const std::string& str_id)													{ ImGui::OpenPopup(str_id.c_str()); }
 	inline void OpenPopup(const std::string& str_id, int popup_flags)									{ ImGui::OpenPopup(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags)); }
-	inline bool OpenPopupContextItem()																	{ return ImGui::OpenPopupContextItem(); }
-	inline bool OpenPopupContextItem(const std::string& str_id)											{ return ImGui::OpenPopupContextItem(str_id.c_str()); }
-	inline bool OpenPopupContextItem(const std::string& str_id, int popup_flags)						{ return ImGui::OpenPopupContextItem(str_id.c_str(), static_cast<ImGuiPopupFlags>(popup_flags)); }
+
 	inline void CloseCurrentPopup()																		{ ImGui::CloseCurrentPopup(); }
 	inline bool BeginPopupContextItem()																	{ return ImGui::BeginPopupContextItem(); }
 	inline bool BeginPopupContextItem(const std::string& str_id)										{ return ImGui::BeginPopupContextItem(str_id.c_str()); }
@@ -1644,7 +1642,7 @@ namespace sol_ImGui
 	inline std::string GetClipboardText()																{ return std::string(ImGui::GetClipboardText()); }
 	inline void SetClipboardText(const std::string& text)												{ ImGui::SetClipboardText(text.c_str()); }
 	
-	inline void InitEnums(sol::state& lua)
+	inline void InitEnums(sol::state_view& lua)
 	{
 #pragma region Window Flags
 		lua.new_enum("ImGuiWindowFlags",
@@ -1807,7 +1805,6 @@ namespace sol_ImGui
 			"GrabMinSize"				, ImGuiStyleVar_GrabMinSize,
 			"GrabRounding"				, ImGuiStyleVar_GrabRounding,
 			"TabRounding"				, ImGuiStyleVar_TabRounding,
-			"SelectableRounding"		, ImGuiStyleVar_SelectableRounding,
 			"SelectableTextAlign"		, ImGuiStyleVar_SelectableTextAlign,
 			"ButtonTextAlign"			, ImGuiStyleVar_ButtonTextAlign,
 			"COUNT"						, ImGuiStyleVar_COUNT
@@ -2046,7 +2043,7 @@ namespace sol_ImGui
 #pragma endregion MouseCursor
 	}
 	
-	inline void Init(sol::state& lua)
+	inline void Init(sol::state_view& lua)
 	{
 		InitEnums(lua);
 		
@@ -2599,11 +2596,6 @@ namespace sol_ImGui
 		ImGui.set_function("OpenPopup"						, sol::overload(
 																sol::resolve<void(const std::string&)>(OpenPopup),
 																sol::resolve<void(const std::string&, int)>(OpenPopup)
-															));
-		ImGui.set_function("OpenPopupContextItem"			, sol::overload(
-																sol::resolve<bool()>(OpenPopupContextItem),
-																sol::resolve<bool(const std::string&)>(OpenPopupContextItem),
-																sol::resolve<bool(const std::string&, int)>(OpenPopupContextItem)
 															));
 		ImGui.set_function("CloseCurrentPopup"				, CloseCurrentPopup);
 		ImGui.set_function("BeginPopupContextItem"			, sol::overload(
