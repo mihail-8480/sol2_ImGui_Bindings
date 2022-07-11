@@ -1857,9 +1857,7 @@ namespace sol_ImGui
 			"Password"				, ImGuiInputTextFlags_Password,
 			"NoUndoRedo"			, ImGuiInputTextFlags_NoUndoRedo,
 			"CharsScientific"		, ImGuiInputTextFlags_CharsScientific,
-			"CallbackResize"		, ImGuiInputTextFlags_CallbackResize,
-			"Multiline"				, ImGuiInputTextFlags_Multiline,
-			"NoMarkEdited"			, ImGuiInputTextFlags_NoMarkEdited
+			"CallbackResize"		, ImGuiInputTextFlags_CallbackResize
 		);
 #pragma endregion InputText Flags
 
@@ -1889,16 +1887,7 @@ namespace sol_ImGui
 			"PickerHueBar"			, ImGuiColorEditFlags_PickerHueBar,
 			"PickerHueWheel"		, ImGuiColorEditFlags_PickerHueWheel,
 			"InputRGB"				, ImGuiColorEditFlags_InputRGB,
-			"InputHSV"				, ImGuiColorEditFlags_InputHSV,
-
-			"_OptionsDefault"		, ImGuiColorEditFlags__OptionsDefault,
-
-			"_DisplayMask"			, ImGuiColorEditFlags__DisplayMask,
-			"_DataTypeMask"			, ImGuiColorEditFlags__DataTypeMask,
-			"_PickerMask"			, ImGuiColorEditFlags__PickerMask,
-			"_InputMask"			, ImGuiColorEditFlags__InputMask,
-
-			"RGB"					, ImGuiColorEditFlags_RGB
+			"InputHSV"				, ImGuiColorEditFlags_InputHSV
 		);
 #pragma endregion ColorEdit Flags
 
